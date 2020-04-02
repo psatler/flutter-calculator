@@ -5,6 +5,10 @@ import 'button_row.dart';
 
 class Keyboard extends StatelessWidget {
 
+  final void Function(String) keyboardCb;
+
+  Keyboard(this.keyboardCb);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,40 +17,40 @@ class Keyboard extends StatelessWidget {
         children: <Widget>[
           ButtonRow(
             [
-              Button.big(text: 'AC'),
-              Button(text: '%'),
-              Button.operation(text: '/'),
+              Button.big(text: 'AC', color: Button.DARK, callback: keyboardCb, ),
+              Button(text: '%', color: Button.DARK, callback: keyboardCb,),
+              Button.operation(text: '/', callback: keyboardCb),
             ],
           ),
           ButtonRow(
             [
-              Button(text: '7'),
-              Button(text: '8'),
-              Button(text: '9'),
-              Button.operation(text: 'x'),
+              Button(text: '7', callback: keyboardCb),
+              Button(text: '8', callback: keyboardCb),
+              Button(text: '9', callback: keyboardCb),
+              Button.operation(text: 'x', callback: keyboardCb),
             ],
           ),
           ButtonRow(
             [
-              Button(text: '4'),
-              Button(text: '5'),
-              Button(text: '6'),
-              Button.operation(text: '-'),
+              Button(text: '4', callback: keyboardCb),
+              Button(text: '5', callback: keyboardCb),
+              Button(text: '6', callback: keyboardCb),
+              Button.operation(text: '-', callback: keyboardCb),
             ],
           ),
           ButtonRow(
             [
-              Button(text: '1'),
-              Button(text: '2'),
-              Button(text: '3'),
-              Button.operation(text: '+'),
+              Button(text: '1', callback: keyboardCb),
+              Button(text: '2', callback: keyboardCb),
+              Button(text: '3', callback: keyboardCb),
+              Button.operation(text: '+', callback: keyboardCb),
             ],
           ),
           ButtonRow(
             [
-              Button.big(text: '0'),
-              Button(text: ','),
-              Button.operation(text: '='),
+              Button.big(text: '0', callback: keyboardCb),
+              Button(text: ',', callback: keyboardCb),
+              Button.operation(text: '=', callback: keyboardCb),
             ],
           )
         ],
