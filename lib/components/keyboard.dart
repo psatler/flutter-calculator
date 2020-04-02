@@ -12,7 +12,7 @@ class Keyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: 500,
       child: Column(
         children: <Widget>[
           ButtonRow(
@@ -49,7 +49,7 @@ class Keyboard extends StatelessWidget {
           ButtonRow(
             [
               Button.big(text: '0', callback: keyboardCb),
-              Button(text: ',', callback: keyboardCb),
+              Button(text: '.', callback: keyboardCb),
               Button.operation(text: '=', callback: keyboardCb),
             ],
           )
