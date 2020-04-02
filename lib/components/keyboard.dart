@@ -22,6 +22,7 @@ class Keyboard extends StatelessWidget {
               Button.operation(text: '/', callback: keyboardCb),
             ],
           ),
+          SizedBox(height: 1),
           ButtonRow(
             [
               Button(text: '7', callback: keyboardCb),
@@ -30,6 +31,7 @@ class Keyboard extends StatelessWidget {
               Button.operation(text: 'x', callback: keyboardCb),
             ],
           ),
+          SizedBox(height: 1),
           ButtonRow(
             [
               Button(text: '4', callback: keyboardCb),
@@ -38,6 +40,7 @@ class Keyboard extends StatelessWidget {
               Button.operation(text: '-', callback: keyboardCb),
             ],
           ),
+          SizedBox(height: 1),
           ButtonRow(
             [
               Button(text: '1', callback: keyboardCb),
@@ -46,6 +49,7 @@ class Keyboard extends StatelessWidget {
               Button.operation(text: '+', callback: keyboardCb),
             ],
           ),
+          SizedBox(height: 1),
           ButtonRow(
             [
               Button.big(text: '0', callback: keyboardCb),
