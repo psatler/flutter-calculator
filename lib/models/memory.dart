@@ -5,7 +5,7 @@ class Memory {
   // buffer to store the numbers typed by the user
   final _buffer = [0.0, 0.0];
   int _bufferIndex = 0;
-  String operation;
+  String _operation;
   String _value = '0'; // private variable
   bool _wipeValue = false;
 
@@ -16,11 +16,55 @@ class Memory {
 
   _allClear() {
     _value = '0';
+    _buffer.setAll(0, [0.0, 0.0]);
+    _bufferIndex = 0;
+    _operation = null;
+    _wipeValue = false;
+  }
+
+  _calculate() {
+    switch(_operation) {
+      case '%':
+        return _buffer[0] % _buffer[1];
+      case '/':
+        return _buffer[0] / _buffer[1];
+      case 'x':
+        return _buffer[0] * _buffer[1];
+      case '-':
+        return _buffer[0] - _buffer[1];
+      case '+':
+        return _buffer[0] + _buffer[1];
+      default:
+        return _buffer[0]; // in case the user continues pressing the equal sign
+    }
   }
 
   _setOperation(String newOperation) {
-    // when you setting a operation, we clear the display
-    _wipeValue = true;
+    bool isEqualSign = newOperation == '=';
+
+    if(_bufferIndex == 0) {
+      if(!isEqualSign) {
+        _operation = newOperation;
+        _bufferIndex = 1;
+
+        // when you setting a operation, we clear the display
+        _wipeValue = true;
+      }
+    } else {
+      // the user is setting a third value, so we perform the operation set with the first two ones
+      _buffer[0] = _calculate();
+      _buffer[1] = 0.0;
+      _bufferIndex = 0;
+
+      // display the calculated value on the display
+      _value = _buffer[0].toString();
+      _value = _value.endsWith('.0') ? _value.split('.')[0] : _value;
+
+      // if the user pressed the equal sign
+      _operation = isEqualSign ? null : newOperation;
+      _bufferIndex = isEqualSign ? 0 : 1;
+    }
+    _wipeValue = true; // !isEqualSign;
   }
 
   _addDigit(String digit) {
