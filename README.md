@@ -1,6 +1,19 @@
+<p align="center">
+  <img alt="Repository Last Commit Date" src="https://img.shields.io/github/last-commit/psatler/flutter-calculator?color=blue">
+
+  <a href="https://www.linkedin.com/in/pablosatler/">
+    <img alt="Made by Pablo Satler" src="https://img.shields.io/badge/made%20by-Pablo%20Satler-blue">
+  </a>
+
+</p>
+
 # calculator
 
-A new Flutter project.
+A MacOS like calculator.
+
+<p align="center">
+  <img src="screenshots/calculator.png">
+</p>
 
 ## Getting Started
 
