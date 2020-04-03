@@ -8,6 +8,7 @@ class Memory {
   String _operation;
   String _value = '0'; // private variable
   bool _wipeValue = false;
+  String _lastCommand;
 
   // getter
   String get value {
@@ -86,7 +87,20 @@ class Memory {
     _buffer[_bufferIndex] = double.tryParse(_value) ?? 0;
   }
 
+  _isReplacingOperation(String command) {
+    final isAnOperation = operations.contains(_lastCommand) && operations.contains(command);
+    final isAnEqualSign = _lastCommand != '=' && command != '=';
+
+    return isAnEqualSign && isAnOperation;
+
+  }
+
   void applyCommand(String command) {
+    if(_isReplacingOperation(command)) {
+      _operation = command; // replace the last command with the current one and return
+      return;
+    }
+
     if(command == 'AC') {
       _allClear();
     } else if (operations.contains(command)) {
@@ -94,5 +108,7 @@ class Memory {
     } else {
       _addDigit(command); 
     }
+
+    _lastCommand = command;
   }
 }
